@@ -1,0 +1,7 @@
+Reduce Palette
+  Colors: 256
+  Dithering: 1
+
+Compress
+  Method: OxiPNG
+  Effort: 3
