@@ -1,7 +1,10 @@
-Reduce Palette
-  Colors: 256
-  Dithering: 1
+PNG Squoosh
+  Reduce Palette
+    Colors: 256
+    Dithering: 1
+  Compress
+    Method: OxiPNG
+    Effort: 3
 
-Compress
-  Method: OxiPNG
-  Effort: 3
+WebP Google Encoder
+  Lossy 90
