@@ -4,7 +4,7 @@
     "zx": ">=4.0.0"
   },
   "name": "dsr-assets",
-  "version": "9.0.0",
+  "version": "10.0.0",
   "description": "Static assets CDN for DSR projects using jsDelivr.",
   "author": "DSRKafuU <dsrkafuu@outlook.com> (https://dsrkafuu.net)",
   "license": "Apache-2.0",
@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "dotenv": "~16.0.0",
-    "fs-extra": "~10.0.1",
-    "zx": "~6.0.7"
+    "fs-extra": "~10.1.0",
+    "zx": "~6.1.0"
   }
 }
