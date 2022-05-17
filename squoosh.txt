@@ -8,3 +8,4 @@ PNG Squoosh
 
 WebP Google Encoder
   Lossy 90
+  Lossy 60

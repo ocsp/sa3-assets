@@ -1,12 +1,12 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 specifiers:
-  dotenv: ~16.0.0
+  dotenv: ~16.0.1
   fs-extra: ~10.1.0
   zx: ~6.1.0
 
 devDependencies:
-  dotenv: 16.0.0
+  dotenv: 16.0.1
   fs-extra: 10.1.0
   zx: 6.1.0
 
@@ -75,8 +75,8 @@ packages:
       path-type: 4.0.0
     dev: true
 
-  /dotenv/16.0.0:
-    resolution: {integrity: sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==}
+  /dotenv/16.0.1:
+    resolution: {integrity: sha512-1K6hR6wtk2FviQ4kEiSjFiH5rpzEVi8WW0x96aztHVMhEspNpc4DVOUTEHtEva5VThQ8IaBX1Pe4gSzpVVUsKQ==}
     engines: {node: '>=12'}
     dev: true
 
