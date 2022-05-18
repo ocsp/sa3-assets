@@ -1,10 +1,18 @@
 // #!/usr/bin/env zx
-import dotenv from 'dotenv';
+/**
+ * 发布新版本至 GitHub
+ */
+import 'dotenv/config';
+import path from 'path';
+import url from 'url';
 import fse from 'fs-extra';
+import chalk from 'chalk';
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
-dotenv.config();
-$.quote = (s) => s; // 防止 Windows 上会产生意外的引号 $'' 转译
+// 防止 Windows 上会产生意外的引号 $'' 转译
+$.quote = (s) => s;
 
+// GitHub 登录
 if (!process.env.GH_TOKEN) {
   console.log(chalk.red('未设定 GH_TOKEN 环境变量'));
   process.exit(1);
@@ -16,6 +24,7 @@ if (!/Logged in to github.com as/.exec(login.stdout || login.stderr)) {
 }
 console.log(chalk.green('GitHub CLI 登陆成功'));
 
+// 检查已发布的版本
 const releases = await $`gh release list`;
 let latestRelease = [];
 // 无已发布的版本
@@ -40,13 +49,16 @@ else {
     process.exit(1);
   }
 }
-// 写入版本
+
+// 写入新版本
 const newVersion = Number.parseInt(latestRelease[1].split('.')[0]) + 1;
-const pkg = fse.readJSONSync('./package.json');
+const pkgPath = path.resolve(__dirname, '../package.json');
+const pkg = fse.readJSONSync(pkgPath);
 pkg.version = `${newVersion}.0.0`;
-fse.writeJSONSync('./package.json', pkg, { spaces: 2 });
+fse.writeJSONSync(pkgPath, pkg, { spaces: 2 });
 console.log(chalk.green('已写入最新版本号 v' + pkg.version));
 
+// 发布新版本
 const note = `${new Date().toISOString()}`;
 try {
   await $`git add .`;
@@ -59,16 +71,10 @@ try {
   process.exit(1);
 }
 console.log(chalk.green(`已为版本 v${pkg.version} 提交最新文件`));
-
 const release = await $`gh release create v${pkg.version} --notes ""`;
-const url = (release.stdout || release.stderr || '').trim();
-if (!url || !/github.com/.exec(url)) {
+const ghUrl = (release.stdout || release.stderr || '').trim();
+if (!ghUrl || !/github.com/.exec(ghUrl)) {
   console.log(chalk.red('发布新版本失败'));
   process.exit(1);
 }
-
-const cdnUrl = url
-  .replace('github.com', 'cdn.jsdelivr.net/gh')
-  .replace('/releases/tag/v', '@')
-  .replace(/\.0\.0.*$/, '.0.0/');
-console.log(chalk.green(`版本已发布到 ${cdnUrl}`));
+console.log(chalk.green(`版本已发布到 ${ghUrl}`));

@@ -25,5 +25,4 @@ $RECYCLE.BIN/
 .Spotlight-V100
 .Trashes
 
-_redist/**
-!_redist/*.ps1
+dist/

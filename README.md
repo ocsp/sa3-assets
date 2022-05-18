@@ -1,11 +1,8 @@
 # dsr-assets
 
 ![GitHub release date](https://img.shields.io/github/release-date/dsrkafuu/dsr-assets)
-![jsDelivr hits](https://img.shields.io/jsdelivr/gh/hw/dsrkafuu/dsr-assets)
 
-Static images CDN for DSR projects using jsDelivr.
-
-CDN address: <https://www.jsdelivr.com/package/gh/dsrkafuu/dsr-assets>
+Static assets CDN for DSR projects.
 
 ## System Dependencies
 
