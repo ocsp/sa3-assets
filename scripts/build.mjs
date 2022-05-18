@@ -24,17 +24,19 @@ const copyFolder = (src, dst) => {
     if (fse.statSync(srcFile).isDirectory()) {
       copyFolder(srcFile, dstFile);
     } else {
-      // 计算文件哈希
-      const hash = crypto.createHash('md5');
-      const file = fse.readFileSync(srcFile);
-      hash.update(file);
-      const md5 = hash.digest('hex');
-      // 写入文件
-      const shortMD5 = md5.substring(0, 8);
-      let dstFileName = path.basename(dstFile);
-      dstFileName = dstFileName.replace(/\.(\w+)$/, `.${shortMD5}.$1`);
-      dstFile = path.join(dst, dstFileName);
-      console.log(chalk.green(`写入文件 ${dstFileName}`));
+      // // 计算文件哈希
+      // const hash = crypto.createHash('md5');
+      // const file = fse.readFileSync(srcFile);
+      // hash.update(file);
+      // const md5 = hash.digest('hex');
+      // // 写入文件
+      // const shortMD5 = md5.substring(0, 8);
+      // let dstFileName = path.basename(dstFile);
+      // dstFileName = dstFileName.replace(/\.(\w+)$/, `.${shortMD5}.$1`);
+      // dstFile = path.join(dst, dstFileName);
+      // console.log(chalk.green(`写入文件 ${dstFileName}`));
+      // fse.copyFileSync(srcFile, dstFile);
+      console.log(chalk.green(`写入文件 ${path.basename(dstFile)}`));
       fse.copyFileSync(srcFile, dstFile);
     }
   });
