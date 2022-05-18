@@ -98,3 +98,8 @@ const genFolderHTML = (folder) => {
   });
 };
 genFolderHTML(distPath);
+
+// 复制 PUBLIC 文件夹
+console.log(chalk.green('复制 PUBLIC 文件夹'));
+const publicPath = path.join(__dirname, '../public');
+fse.copySync(publicPath, distPath);
