@@ -1,2 +1,4 @@
-https://:url.dsrkafuu.net/*
-  Access-Control-Allow-Origin: https://:url.dsrkafuu.net
+/*
+  Access-Control-Allow-Origin: *
+  X-Content-Type-Options: nosniff
+  Permissions-Policy: interest-cohort=()
