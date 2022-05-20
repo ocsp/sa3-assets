@@ -4,7 +4,7 @@
 import 'dotenv/config';
 import path from 'path';
 import url from 'url';
-import crypto from 'crypto';
+// import crypto from 'crypto';
 import fse from 'fs-extra';
 import chalk from 'chalk';
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));

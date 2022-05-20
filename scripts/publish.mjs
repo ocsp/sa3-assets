@@ -1,4 +1,5 @@
 // #!/usr/bin/env zx
+/* global $ */
 /**
  * 发布新版本至 GitHub
  */
