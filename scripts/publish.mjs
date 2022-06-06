@@ -64,9 +64,9 @@ const note = `${new Date().toISOString()}`;
 try {
   await $`git add .`;
   await $`git commit -m "${note}"`;
-  await $`git tag v${pkg.version} -f`;
+  await $`git tag v${pkg.version}`;
   await $`git pull --rebase -X theirs`;
-  await $`git push origin -f --tags`;
+  await $`git push origin --tags`;
 } catch (e) {
   console.error(e);
   console.log(chalk.red('无法提交最新文件'));
