@@ -66,6 +66,7 @@ try {
   await $`git commit -m "${note}"`;
   await $`git tag v${pkg.version}`;
   await $`git pull --rebase -X theirs`;
+  await $`git push origin`;
   await $`git push origin --tags`;
 } catch (e) {
   console.error(e);
