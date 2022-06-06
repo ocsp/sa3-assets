@@ -64,15 +64,15 @@ const note = `${new Date().toISOString()}`;
 try {
   await $`git add .`;
   await $`git commit -m "${note}"`;
+  await $`git tag v${pkg.version}`;
   await $`git pull --rebase -X theirs`;
-  await $`git push origin`;
+  await $`git push origin --tags`;
 } catch {
   console.log(chalk.red('无法提交最新文件'));
   process.exit(1);
 }
 console.log(chalk.green(`已为版本 v${pkg.version} 提交最新文件`));
 const release = await $`gh release create v${pkg.version} --notes ""`;
-await $`git pull --rebase -X theirs`;
 const ghUrl = (release.stdout || release.stderr || '').trim();
 if (!ghUrl || !/github.com/.exec(ghUrl)) {
   console.log(chalk.red('发布新版本失败'));
