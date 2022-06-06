@@ -66,7 +66,7 @@ try {
   await $`git commit -m "${note}"`;
   await $`git tag v${pkg.version} -f`;
   await $`git pull --rebase -X theirs`;
-  await $`git push origin --tags`;
+  await $`git push origin -f --tags`;
 } catch (e) {
   console.error(e);
   console.log(chalk.red('无法提交最新文件'));
