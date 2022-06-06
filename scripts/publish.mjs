@@ -64,7 +64,7 @@ const note = `${new Date().toISOString()}`;
 try {
   await $`git add .`;
   await $`git commit -m "${note}"`;
-  await $`git tag v${pkg.version}`;
+  await $`git tag v${pkg.version} -f`;
   await $`git pull --rebase -X theirs`;
   await $`git push origin --tags`;
 } catch (e) {
