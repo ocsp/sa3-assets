@@ -67,7 +67,8 @@ try {
   await $`git tag v${pkg.version}`;
   await $`git pull --rebase -X theirs`;
   await $`git push origin --tags`;
-} catch {
+} catch (e) {
+  console.error(e);
   console.log(chalk.red('无法提交最新文件'));
   process.exit(1);
 }
